@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Yii 2 Advanced Application Template
 ===================================
 
@@ -125,3 +126,9 @@ In similar way you can run tests for other application tiers - `backend`, `conso
 
 You also can adjust you application suite configs and `_bootstrap.php` settings to use other urls and files, as it is can be done in `yii2-basic`.
 Current template also includes [yii2-faker](https://github.com/yiisoft/yii2/tree/master/extensions/faker) extension, that is correctly setup for each application tier.
+=======
+yii2-advanced-rabbitmq-nodejs.advanced
+======================================
+
+yii2-advanced-rabbitmq-nodejs.advanced
+>>>>>>> df3170bfe0f50d5397a9038b4e7338e085cb8dce
