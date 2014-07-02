@@ -5,5 +5,7 @@
     </p>
 </div>
 <?php
+//exec('whoami', $test);
+//var_dump($test);
 //var_dump();
 ?>

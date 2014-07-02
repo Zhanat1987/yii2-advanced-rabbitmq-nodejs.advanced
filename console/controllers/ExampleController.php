@@ -36,17 +36,6 @@ class ExampleController extends \yii\console\Controller
         Yii::info(1, 1);
         Yii::error('test', 'test');
         echo 12345;
-//        Console::FG_RED;
-//        Console::stdout('stdout test');
-//        Console::error('error text');
-//        Console::renderColoredString('colored string');
-//        Console::startProgress(0, 1000);
-//        for ($n = 1; $n <= 1000; $n++)
-//        {
-//            usleep(1000);
-//            Console::updateProgress($n, 1000);
-//        }
-//        Console::endProgress();
     }
 
     /**
@@ -76,7 +65,9 @@ class ExampleController extends \yii\console\Controller
         // A fanout exchange broadcasts to all known queues.
         $channel->exchange_declare('updates', 'fanout', false, false, false);
 
+        $counter = 100;
         // Create and publish the message to the exchange.
+//        while (--$counter)
         while (true)
         {
             $data = array(

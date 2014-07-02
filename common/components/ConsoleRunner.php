@@ -14,6 +14,59 @@ class ConsoleRunner
         $this->_yiiCommand = dirname(dirname($_SERVER['DOCUMENT_ROOT'])) . DIRECTORY_SEPARATOR . 'yii ';
     }
 
+    public function node()
+    {
+        /**
+        Assuming you're on Unix-based OS:
+        You can run shell commands via the exec() function:
+
+        // in php file
+        // to start the script
+        exec("node myscript.js &", $output);
+         *
+        $output becomes an array of each line of output, so you can see what the process id is.
+        Then you would use that process id to kill the script:
+        exec("kill " . $processid);
+         */
+        $cmd = 'cd ' . $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 'node' . DIRECTORY_SEPARATOR .
+            'js && node server.js';
+
+        if ($this->isWindows()) {
+            $descriptorspec = array(
+                0 => array("pipe", "r"),
+                1 => array("pipe", "w"),
+            );
+            $p = proc_open('start /b ' . $cmd, $descriptorspec, $pipes);
+            $s = proc_get_status($p);
+            proc_close($p);
+//            exec('whoami', $test);
+//            Yii::error($test, 'test');
+//            exec($cmd, $output);
+        } else {
+            pclose(popen($cmd . ' /dev/null &', 'r'));
+        }
+        $this->nodeRabbitMQ('example/test');
+        return true;
+    }
+
+    public function nodeRabbitMQ($cmd)
+    {
+        $cmd = $this->_yiiCommand . $cmd;
+
+        if ($this->isWindows()) {
+            $descriptorspec = array(
+                0 => array("pipe", "r"),
+                1 => array("pipe", "w"),
+            );
+            $p = proc_open('start /b ' . $cmd, $descriptorspec, $pipes);
+            $s = proc_get_status($p);
+            proc_close($p);
+        } else {
+            pclose(popen($cmd . ' /dev/null &', 'r'));
+        }
+        return true;
+    }
+
     public function run($cmd)
     {
         $cmd = $this->_yiiCommand . $cmd;
