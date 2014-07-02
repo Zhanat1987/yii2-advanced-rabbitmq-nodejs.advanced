@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use console\controllers\ExampleController;
 use Yii;
 use common\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
@@ -12,6 +13,9 @@ use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+
+use common\components\ConsoleRunner;
+use yii\helpers\Console;
 
 /**
  * Site controller
@@ -67,6 +71,30 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+//        (new ConsoleRunner())->run('example/run');
+//        (new ExampleController())->run('example/run');
+//        (new \yii\console\Controller('app', 'app'))->run('example/run');
+//        $consoleApp = new \yii\console\Application([
+//                'id' => 'Command runner',
+//                'basePath' => '@app',
+//            ]
+//        );
+//        $consoleApp->runAction('example/run');
+
+        $oldApp = \Yii::$app;
+        $dir = dirname(dirname(__DIR__));
+        $config = \yii\helpers\ArrayHelper::merge(
+            require($dir . '/common/config/main.php'),
+            require($dir . '/common/config/main-local.php'),
+            require($dir . '/console/config/main.php'),
+            require($dir . '/console/config/main-local.php')
+        );
+        $consoleApp = new \yii\console\Application($config);
+        $consoleApp->runAction('example/run');
+        \Yii::$app = $oldApp;
+
+//        Yii::$app->getModule('asd')->runAction('example/run');
+
         return $this->render('index');
     }
 

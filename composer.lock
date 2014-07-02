@@ -170,12 +170,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "d23d9ee4a01a3db0fb2b843bbd7b69814a91790b"
+                "reference": "a013c112c41e096a881de67cae76fbaeb88947ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/d23d9ee4a01a3db0fb2b843bbd7b69814a91790b",
-                "reference": "d23d9ee4a01a3db0fb2b843bbd7b69814a91790b",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/a013c112c41e096a881de67cae76fbaeb88947ee",
+                "reference": "a013c112c41e096a881de67cae76fbaeb88947ee",
                 "shasum": ""
             },
             "replace": {
@@ -213,7 +213,7 @@
                 "responsive",
                 "web"
             ],
-            "time": "2014-06-30 02:58:09"
+            "time": "2014-07-01 04:32:50"
         },
         {
             "name": "videlalvaro/php-amqplib",
@@ -323,12 +323,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "0268be3881a515b5d3ef8fb0eb67eda160701e5a"
+                "reference": "29b7285d5a02d8b9760bbfcba81809da3981d326"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/0268be3881a515b5d3ef8fb0eb67eda160701e5a",
-                "reference": "0268be3881a515b5d3ef8fb0eb67eda160701e5a",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/29b7285d5a02d8b9760bbfcba81809da3981d326",
+                "reference": "29b7285d5a02d8b9760bbfcba81809da3981d326",
                 "shasum": ""
             },
             "require": {
@@ -396,7 +396,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2014-06-30 09:31:15"
+            "time": "2014-07-01 08:53:05"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -404,12 +404,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-bootstrap.git",
-                "reference": "7f31280c93695b12010c3789c0d7840534456ac4"
+                "reference": "5517eeac747ad628a79ed8b16f05ec1966ef1c12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap/zipball/7f31280c93695b12010c3789c0d7840534456ac4",
-                "reference": "7f31280c93695b12010c3789c0d7840534456ac4",
+                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap/zipball/5517eeac747ad628a79ed8b16f05ec1966ef1c12",
+                "reference": "5517eeac747ad628a79ed8b16f05ec1966ef1c12",
                 "shasum": ""
             },
             "require": {
@@ -439,7 +439,7 @@
                 "bootstrap",
                 "yii2"
             ],
-            "time": "2014-06-28 07:38:56"
+            "time": "2014-06-30 11:04:22"
         },
         {
             "name": "yiisoft/yii2-composer",
