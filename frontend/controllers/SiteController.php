@@ -71,7 +71,7 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        (new ConsoleRunner())->node();
+//        (new ConsoleRunner())->node();
 //        (new ConsoleRunner())->nodeRabbitMQ('example/test');
         /**
          * yii2 run console controller

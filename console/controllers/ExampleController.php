@@ -54,6 +54,12 @@ class ExampleController extends \yii\console\Controller
      * http://vanbosse.be/blog/detail/pub-sub-with-rabbitmq-and-websocket
      * http://rabbitmq.demo/
      * http://localhost:15672
+     *
+     * // установить пакеты:
+     * zhanat@zhanat-530U4E-540U4E:~/sites/yii2-advanced-rabbitmq-nodejs.advanced/
+     * frontend/web/node/js$ npm install rabbit.js
+     * zhanat@zhanat-530U4E-540U4E:~/sites/yii2-advanced-rabbitmq-nodejs.advanced/
+     * frontend/web/node/js$ npm install socket.io
      */
     public function actionTest()
     {
