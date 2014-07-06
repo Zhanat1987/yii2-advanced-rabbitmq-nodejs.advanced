@@ -4,7 +4,7 @@ namespace frontend\assets;
 
 use yii\web\AssetBundle;
 
-class NodeAsset extends AssetBundle
+class BasicAsset extends AssetBundle
 {
 
     public $basePath = '@noderoot';
