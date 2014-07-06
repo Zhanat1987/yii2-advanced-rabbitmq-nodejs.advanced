@@ -8,10 +8,12 @@ class ConsoleRunner
 {
 
     private $_yiiCommand;
+    private $_cmd;
 
     public function __construct()
     {
         $this->_yiiCommand = dirname(dirname($_SERVER['DOCUMENT_ROOT'])) . DIRECTORY_SEPARATOR . 'yii ';
+        $this->_cmd = PHP_BINDIR . '/php ' . Yii::getAlias('@appRoot/yii') . ' ';
     }
 
     public function node()
@@ -51,7 +53,8 @@ class ConsoleRunner
 
     public function nodeRabbitMQ($cmd)
     {
-        $cmd = $this->_yiiCommand . $cmd;
+//        $cmd = $this->_yiiCommand . $cmd;
+        $cmd = $this->_cmd . $cmd;
 
         if ($this->isWindows()) {
             $descriptorspec = array(
@@ -110,8 +113,6 @@ class ConsoleRunner
         $p = proc_open('start /b ' . $cmd, $descriptorspec, $pipes);
         $s = proc_get_status($p);
         proc_close($p);
-        Yii::app()->cache->set('process', $s['pid']);
-        Yii::app()->cache->set('process2', $p);
     }
 
     /*

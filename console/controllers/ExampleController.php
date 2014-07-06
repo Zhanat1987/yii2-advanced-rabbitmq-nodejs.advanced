@@ -71,7 +71,7 @@ class ExampleController extends \yii\console\Controller
         // A fanout exchange broadcasts to all known queues.
         $channel->exchange_declare('updates', 'fanout', false, false, false);
 
-        $counter = 100;
+        $counter = 5;
         // Create and publish the message to the exchange.
 //        while (--$counter)
         while (true)
@@ -85,7 +85,7 @@ class ExampleController extends \yii\console\Controller
             );
             $message = new AMQPMessage(json_encode($data));
             $channel->basic_publish($message, 'updates');
-            sleep(1);
+            sleep(3);
         }
 
         // Close connection.

@@ -9,5 +9,9 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
         ],
+        'consoleRunner' => [
+            'class' => 'vova07\console\ConsoleRunner',
+            'file' => '@appRoot/yii' // or an absolute path to console file
+        ]
     ],
 ];

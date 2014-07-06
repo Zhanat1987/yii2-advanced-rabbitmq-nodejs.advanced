@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d5f572f64319f8c9e8b51f992bfcb91a",
+    "hash": "4f3d86f4d10fdb689305107648c2ca3a",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -267,6 +267,51 @@
                 "rabbitmq"
             ],
             "time": "2014-06-28 14:08:39"
+        },
+        {
+            "name": "vova07/yii2-console-runner-extension",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vova07/yii2-console-runner-extension.git",
+                "reference": "b67af1ff0a5de74ae06aece83d0273a92d9f657d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vova07/yii2-console-runner-extension/zipball/b67af1ff0a5de74ae06aece83d0273a92d9f657d",
+                "reference": "b67af1ff0a5de74ae06aece83d0273a92d9f657d",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "vova07\\console\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Crudu Vasile",
+                    "email": "bazillio07@yandex.ru"
+                }
+            ],
+            "description": "An extension for running console commands on background in Yii framework.",
+            "homepage": "https://github.com/vova07/yii2-console-runner-extension",
+            "keywords": [
+                "background",
+                "commands",
+                "console",
+                "runner",
+                "yii 2",
+                "yii2"
+            ],
+            "time": "2014-05-27 10:35:28"
         },
         {
             "name": "yiisoft/jquery",
@@ -704,7 +749,8 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "videlalvaro/php-amqplib": 20
+        "videlalvaro/php-amqplib": 20,
+        "vova07/yii2-console-runner-extension": 20
     },
     "platform": {
         "php": ">=5.4.0"
