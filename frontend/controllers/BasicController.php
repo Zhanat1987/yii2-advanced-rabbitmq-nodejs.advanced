@@ -1,212 +1,110 @@
 <?php
+
 namespace frontend\controllers;
 
 use Yii;
-use common\models\LoginForm;
-use frontend\models\PasswordResetRequestForm;
-use frontend\models\ResetPasswordForm;
-use frontend\models\SignupForm;
-use frontend\models\ContactForm;
-use yii\base\InvalidParamException;
-use yii\web\BadRequestHttpException;
+use yii\base\Exception;
 use yii\web\Controller;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
-
 use common\components\Process;
+use yii\web\Response;
+use yii\web\BadRequestHttpException;
+use PhpAmqpLib\Connection\AMQPConnection;
 
 /**
- * Site controller
+ * Class BasicController
+ * @package frontend\controllers
+ *
+ * реализация базового функционала
+ * запуск и остановка в фоновом процессе
+ * 2-х демонов (nodejs socket и php rabbitmq)
  */
-class SiteController extends Controller
+class BasicController extends Controller
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['logout', 'signup'],
-                'rules' => [
-                    [
-                        'actions' => ['signup'],
-                        'allow' => true,
-                        'roles' => ['?'],
-                    ],
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function actions()
-    {
-        return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
-            ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
-        ];
-    }
 
     public function actionIndex()
     {
+        $cache = Yii::$app->cache;
+        if (!$cache->get('basicIsStart')) {
+            $nodeCommand = 'node ' . Yii::getAlias('@nodejs') .
+                DIRECTORY_SEPARATOR . 'server.js';
+            $nodeProcess = new Process($nodeCommand);
+            $nodePid = $nodeProcess->getPid();
+            Yii::$app->session->set('chatNodePid', $nodePid);
+            $cache->set('basicIsStart', true, 1800);
+
+            // Create a connection with RabbitMQ server.
+            $connection = new AMQPConnection('localhost', 5672, 'guest', 'guest');
+            $channel = $connection->channel();
+
+            // Create a fanout exchange.
+            // A fanout exchange broadcasts to all known queues.
+            $channel->exchange_declare('updates', 'fanout', false, false, false);
+
+            // Close connection.
+            $channel->close();
+            $connection->close();
+        }
         return $this->render('index');
     }
 
-    public function actionLogin()
+    public function actionStart()
     {
-        if (!\Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+        if (Yii::$app->request->isAjax) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            try {
+                // Запуск демона и получение PID (предполагается,
+                // что pid где-то сохраняется после запуска)
+                // /usr/bin/php /h
+                $command = PHP_BINDIR . '/php ' .
+                    Yii::getAlias('@appRoot/yii') . ' basic/index';
+                $process = new Process($command);
+                $processId = $process->getPid();
+                Yii::$app->session->set('processId', $processId);
+                return [
+                    'status' => 'ok',
+                    'msg' => 'Все ништяк!!!',
+                ];
+            } catch (Exception $e) {
+                return [
+                    'status' => 'error',
+                    'msg' => $e->getMessage(),
+                ];
+            }
         } else {
-            return $this->render('login', [
-                'model' => $model,
-            ]);
+            throw new BadRequestHttpException(Yii::t('common', "Запрос не ajax'овский!!!"));
         }
     }
 
-    public function actionLogout()
+    public function actionStop()
     {
-        Yii::$app->user->logout();
+        if (Yii::$app->request->isAjax) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            try {
+                // Остановка демона
+                $process2 = new Process();
+                $process2->setPid(Yii::$app->session->get('processId2'));
+                $stopped2 = $process2->stop(); // возвращает true или false
 
-        return $this->goHome();
-    }
+                // Остановка демона
+                $process = new Process();
+                $process->setPid(Yii::$app->session->get('processId'));
+                $stopped = $process->stop(); // возвращает true или false
 
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
-                Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
-            } else {
-                Yii::$app->session->setFlash('error', 'There was an error sending email.');
+                Yii::$app->cache->delete('basicIsStart');
+
+                return [
+                    'status' => 'ok',
+                    'msg' => 'Все ништяк!!!',
+                ];
+            } catch (Exception $e) {
+                return [
+                    'status' => 'error',
+                    'msg' => $e->getMessage(),
+                ];
             }
-
-            return $this->refresh();
         } else {
-            return $this->render('contact', [
-                'model' => $model,
-            ]);
+            throw new BadRequestHttpException(Yii::t('common', "Запрос не ajax'овский!!!"));
         }
     }
 
-    public function actionAbout()
-    {
-        // nodejs
-//        $command2 = 'node ' . Yii::getAlias('@nodejs') . DIRECTORY_SEPARATOR . 'server.js';
-//        $process2 = new Process($command2);
-//        $processId2 = $process2->getPid();
-//        Yii::$app->session->set('processId2', $processId2);
-//
-//        // Проверка статуса демона
-//        $process2 = new Process();
-//        $process2->setPid(Yii::$app->session->get('processId2'));
-//        $status2 = $process2->status(); // возвращает true или false
-
-        // Остановка демона
-        $process2 = new Process();
-        $process2->setPid(Yii::$app->session->get('processId2'));
-        $stopped2 = $process2->stop(); // возвращает true или false
-
-        // Запуск демона и получение PID (предполагается, что pid где-то сохраняется после запуска)
-        // /usr/bin/php /h
-//        $command = PHP_BINDIR . '/php ' . Yii::getAlias('@appRoot/yii') . ' example/test';
-//        $process = new Process($command);
-//        $processId = $process->getPid();
-//        Yii::$app->session->set('processId', $processId);
-//
-//        // Проверка статуса демона
-//        $process = new Process();
-//        $process->setPid(Yii::$app->session->get('processId'));
-//        $status = $process->status(); // возвращает true или false
-
-        // Остановка демона
-        $process = new Process();
-        $process->setPid(Yii::$app->session->get('processId'));
-        $stopped = $process->stop(); // возвращает true или false
-
-        return $this->render('about', [
-//            'status' => $status,
-//            'stopped' => $stopped,
-//            'status2' => $status2,
-//            'stopped2' => $stopped2,
-//            'command2' => $command2,
-        ]);
-    }
-
-    public function actionSignup()
-    {
-        $model = new SignupForm();
-        if ($model->load(Yii::$app->request->post())) {
-            if ($user = $model->signup()) {
-                if (Yii::$app->getUser()->login($user)) {
-                    return $this->goHome();
-                }
-            }
-        }
-
-        return $this->render('signup', [
-            'model' => $model,
-        ]);
-    }
-
-    public function actionRequestPasswordReset()
-    {
-        $model = new PasswordResetRequestForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail()) {
-                Yii::$app->getSession()->setFlash('success', 'Check your email for further instructions.');
-
-                return $this->goHome();
-            } else {
-                Yii::$app->getSession()->setFlash('error', 'Sorry, we are unable to reset password for email provided.');
-            }
-        }
-
-        return $this->render('requestPasswordResetToken', [
-            'model' => $model,
-        ]);
-    }
-
-    public function actionResetPassword($token)
-    {
-        try {
-            $model = new ResetPasswordForm($token);
-        } catch (InvalidParamException $e) {
-            throw new BadRequestHttpException($e->getMessage());
-        }
-
-        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
-            Yii::$app->getSession()->setFlash('success', 'New password was saved.');
-
-            return $this->goHome();
-        }
-
-        return $this->render('resetPassword', [
-            'model' => $model,
-        ]);
-    }
 }

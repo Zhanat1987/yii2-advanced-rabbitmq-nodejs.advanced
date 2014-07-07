@@ -1,7 +1,6 @@
 <?php
 namespace frontend\controllers;
 
-use console\controllers\ExampleController;
 use Yii;
 use common\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
@@ -13,13 +12,6 @@ use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-
-use common\components\ConsoleRunner;
-use yii\helpers\Console;
-
-use vova07\console\ConsoleRunner as CR;
-
-use common\components\Process;
 
 /**
  * Site controller
@@ -75,29 +67,6 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-//        var_dump(Yii::getAlias('@appRoot'));
-//        exit;
-//        (new ConsoleRunner())->node();
-//        (new ConsoleRunner())->nodeRabbitMQ('example/test');
-
-//        $cr = new CR(['file' => '@appRoot/yii']);
-//        $cr->run('example/test');
-
-        /**
-         * yii2 run console controller
-         * https://github.com/yiisoft/yii2/issues/1764
-         */
-//        $oldApp = \Yii::$app;
-//        $dir = dirname(dirname(__DIR__));
-//        $config = \yii\helpers\ArrayHelper::merge(
-//            require($dir . '/common/config/main.php'),
-//            require($dir . '/common/config/main-local.php'),
-//            require($dir . '/console/config/main.php'),
-//            require($dir . '/console/config/main-local.php')
-//        );
-//        $consoleApp = new \yii\console\Application($config);
-//        $consoleApp->runAction('example/test');
-//        \Yii::$app = $oldApp;
         return $this->render('index');
     }
 
@@ -140,50 +109,6 @@ class SiteController extends Controller
                 'model' => $model,
             ]);
         }
-    }
-
-    public function actionAbout()
-    {
-        // nodejs
-//        $command2 = 'node ' . Yii::getAlias('@nodejs') . DIRECTORY_SEPARATOR . 'server.js';
-//        $process2 = new Process($command2);
-//        $processId2 = $process2->getPid();
-//        Yii::$app->session->set('processId2', $processId2);
-//
-//        // Проверка статуса демона
-//        $process2 = new Process();
-//        $process2->setPid(Yii::$app->session->get('processId2'));
-//        $status2 = $process2->status(); // возвращает true или false
-
-        // Остановка демона
-        $process2 = new Process();
-        $process2->setPid(Yii::$app->session->get('processId2'));
-        $stopped2 = $process2->stop(); // возвращает true или false
-
-        // Запуск демона и получение PID (предполагается, что pid где-то сохраняется после запуска)
-        // /usr/bin/php /h
-//        $command = PHP_BINDIR . '/php ' . Yii::getAlias('@appRoot/yii') . ' example/test';
-//        $process = new Process($command);
-//        $processId = $process->getPid();
-//        Yii::$app->session->set('processId', $processId);
-//
-//        // Проверка статуса демона
-//        $process = new Process();
-//        $process->setPid(Yii::$app->session->get('processId'));
-//        $status = $process->status(); // возвращает true или false
-
-        // Остановка демона
-        $process = new Process();
-        $process->setPid(Yii::$app->session->get('processId'));
-        $stopped = $process->stop(); // возвращает true или false
-
-        return $this->render('about', [
-//            'status' => $status,
-//            'stopped' => $stopped,
-//            'status2' => $status2,
-//            'stopped2' => $stopped2,
-//            'command2' => $command2,
-        ]);
     }
 
     public function actionSignup()

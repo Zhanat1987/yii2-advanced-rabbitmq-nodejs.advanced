@@ -4,19 +4,19 @@ namespace frontend\assets;
 
 use yii\web\AssetBundle;
 
-class BasicAsset extends AssetBundle
+class ChatAsset extends AssetBundle
 {
 
     public $basePath = '@noderoot';
     public $baseUrl = '@node';
 
     public $css = [
-        'css/screen.css',
+        'css/chat.css',
     ];
 
     public $js = [
-        'js/client.js',
-        'js/basic.js',
+        'js/chatClient.js',
+        'js/chat.js',
     ];
 
     public $depends = [
