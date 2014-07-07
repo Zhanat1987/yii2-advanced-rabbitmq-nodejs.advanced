@@ -21,6 +21,8 @@ use PhpAmqpLib\Connection\AMQPConnection;
 class ChatController extends Controller
 {
 
+    public $enableCsrfValidation = false;
+
     public function actionIndex()
     {
         $cache = Yii::$app->cache;
@@ -50,9 +52,9 @@ class ChatController extends Controller
         ]);
     }
 
-    public function actionStart()
+//    public function actionStart()
+    public function actionStart($name, $message)
     {
-//        $this->enableCsrfValidation = false;
         if (Yii::$app->request->isAjax) {
             Yii::$app->response->format = Response::FORMAT_JSON;
             try {
@@ -60,8 +62,10 @@ class ChatController extends Controller
 //                $message = Yii::$app->request->post('message');
 //                var_dump(Yii::$app->request->post());
 //                var_dump(Yii::$app->request->getBodyParams());
-                $name = Yii::$app->request->getQueryParam('name');
-                $message = Yii::$app->request->getQueryParam('message');
+//                var_dump($name);
+//                var_dump($message);
+//                $name = Yii::$app->request->getQueryParam('name');
+//                $message = Yii::$app->request->getQueryParam('message');
                 if ($name && $message) {
 //                    $chatCommand = PHP_BINDIR . '/php ' . Yii::getAlias('@appRoot/yii') .
 //                        " chat/index --name={$name} --message={$message}";

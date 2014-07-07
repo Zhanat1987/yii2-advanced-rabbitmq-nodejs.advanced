@@ -11,16 +11,17 @@ function chat()
     $('.chatButton').bind('click', function() {
         if (validChatForm()) {
             $.ajax({
-//                type: 'POST',
-                type: 'GET',
-                url: '/chat/start',
+                type: 'POST',
+//                type: 'GET',
+//                url: '/chat/start',
+                url: '/chat/start/' + $('.chatName').val() + '/' + $('.chatMessage').val(),
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
-                data: {
-                    'name' : $('.chatName').val(),
-                    'message' : $('.chatMessage').val(),
-                    '_csrf': yii.getCsrfToken() // yii.getCsrfParam() - возвращает '_csrf'
-                },
+//                data: {
+//                    'name' : $('.chatName').val(),
+//                    'message' : $('.chatMessage').val(),
+//                    '_csrf': yii.getCsrfToken() // yii.getCsrfParam() - возвращает '_csrf'
+//                },
 //                data: $('form').serialize(),
                 success: function(response) {
                     if (response.status == 'ok') {

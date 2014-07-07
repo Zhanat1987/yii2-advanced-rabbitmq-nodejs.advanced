@@ -47,3 +47,5 @@
 127.0.0.1 - - [06/Jul/2014:20:15:36 +0600] "GET /debug/default/toolbar?tag=53b95a07757b1 HTTP/1.1" 200 6384 "http://backend.yii2-advanced-rabbitmq-nodejs.advanced/" "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:30.0) Gecko/20100101 Firefox/30.0"
 127.0.0.1 - - [07/Jul/2014:09:37:47 +0600] "GET / HTTP/1.1" 200 3849 "http://backend.yii2-advanced-rabbitmq-nodejs.advanced/site/login" "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:30.0) Gecko/20100101 Firefox/30.0"
 127.0.0.1 - - [07/Jul/2014:09:37:48 +0600] "GET /debug/default/toolbar?tag=53ba1609e026a HTTP/1.1" 200 6387 "http://backend.yii2-advanced-rabbitmq-nodejs.advanced/" "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:30.0) Gecko/20100101 Firefox/30.0"
+127.0.0.1 - - [07/Jul/2014:14:42:11 +0600] "GET / HTTP/1.1" 200 3851 "http://backend.yii2-advanced-rabbitmq-nodejs.advanced/site/login" "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:30.0) Gecko/20100101 Firefox/30.0"
+127.0.0.1 - - [07/Jul/2014:14:42:11 +0600] "GET /debug/default/toolbar?tag=53ba5d631f207 HTTP/1.1" 200 6382 "http://backend.yii2-advanced-rabbitmq-nodejs.advanced/" "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:30.0) Gecko/20100101 Firefox/30.0"
