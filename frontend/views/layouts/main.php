@@ -34,9 +34,27 @@ AppAsset::register($this);
             ]);
             $menuItems = [
                 ['label' => 'Home', 'url' => ['/site/index']],
-                ['label' => 'Basic', 'url' => ['/basic/index']],
-                ['label' => 'Chat', 'url' => ['/chat/index']],
                 ['label' => 'Contact', 'url' => ['/site/contact']],
+                [
+                    'label' => 'Node Js',
+                    'items' => [
+                        '<li class="divider"></li>',
+                        '<li class="dropdown-header">' . 'Node Js' . '</li>',
+                        ['label' => 'Basic', 'url' => ['/basic/index']],
+                        ['label' => 'Chat', 'url' => ['/chat/index']],
+                        ['label' => 'Uploading Files', 'url' => ['/file/index']],
+                    ]
+                ],
+                [
+                    'label' => 'SockJs-Client',
+                    'items' => [
+                        '<li class="divider"></li>',
+                        '<li class="dropdown-header">' . 'SockJs-Client' . '</li>',
+                        ['label' => 'Basic', 'url' => ['/basic/index']],
+                        ['label' => 'Chat', 'url' => ['/chat/index']],
+                        ['label' => 'Uploading Files', 'url' => ['/file/index']],
+                    ]
+                ],
             ];
             if (Yii::$app->user->isGuest) {
                 $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];

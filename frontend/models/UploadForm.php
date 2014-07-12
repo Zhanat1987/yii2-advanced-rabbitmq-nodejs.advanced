@@ -1,0 +1,35 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: zhanat
+ * Date: 07.07.14
+ * Time: 16:26
+ */
+
+namespace frontend\models;
+
+use yii\base\Model;
+use yii\web\UploadedFile;
+
+/**
+ * UploadForm is the model behind the upload form.
+ */
+class UploadForm extends Model
+{
+
+    /**
+     * @var UploadedFile|Null file attribute
+     */
+    public $file;
+
+    /**
+     * @return array the validation rules.
+     */
+    public function rules()
+    {
+        return [
+            [['file'], 'file'],
+        ];
+    }
+
+}
