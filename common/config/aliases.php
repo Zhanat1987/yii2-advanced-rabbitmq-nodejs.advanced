@@ -8,3 +8,5 @@ Yii::setAlias('noderoot', dirname(dirname(__DIR__)) . '/frontend/web/node');
 Yii::setAlias('node', 'http://' . $_SERVER["HTTP_HOST"] . '/node');
 Yii::setAlias('appRoot', dirname(dirname(__DIR__)));
 Yii::setAlias('nodejs', dirname(dirname(__DIR__)) . '/frontend/web/node/js');
+Yii::setAlias('sockjsroot', dirname(dirname(__DIR__)) . '/frontend/web/sockjs');
+Yii::setAlias('sockjs', 'http://' . $_SERVER["HTTP_HOST"] . '/sockjs');

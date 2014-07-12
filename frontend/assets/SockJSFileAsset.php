@@ -4,18 +4,19 @@ namespace frontend\assets;
 
 use yii\web\AssetBundle;
 
-class FileAsset extends AssetBundle
+class SockJSFileAsset extends AssetBundle
 {
 
-    public $basePath = '@noderoot';
-    public $baseUrl = '@node';
+    public $basePath = '@sockjsroot';
+    public $baseUrl = '@sockjs';
 
     public $css = [
         'css/file.css',
     ];
 
     public $js = [
-        'js/fileClient.js',
+        'js/sockjs-0.3.min.js',
+        'js/stomp.js',
         'js/file.js',
     ];
 

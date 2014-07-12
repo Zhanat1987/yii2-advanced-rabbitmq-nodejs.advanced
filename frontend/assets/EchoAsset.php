@@ -4,20 +4,20 @@ namespace frontend\assets;
 
 use yii\web\AssetBundle;
 
-class TempQueueAsset extends AssetBundle
+class EchoAsset extends AssetBundle
 {
 
     public $basePath = '@sockjsroot';
     public $baseUrl = '@sockjs';
 
     public $css = [
-        'css/temp-queue.css',
+        'css/echo.css',
     ];
 
     public $js = [
         'js/sockjs-0.3.min.js',
         'js/stomp.js',
-        'js/temp-queue.js',
+        'js/echo.js',
     ];
 
     public $depends = [

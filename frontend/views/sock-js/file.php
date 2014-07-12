@@ -1,9 +1,9 @@
 <?php
 
 use yii\widgets\ActiveForm;
-use frontend\assets\FileAsset;
+use frontend\assets\SockJSFileAsset;
 
-FileAsset::register($this);
+SockJSFileAsset::register($this);
 
 $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]);
 

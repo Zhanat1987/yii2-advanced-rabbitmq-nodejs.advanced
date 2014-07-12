@@ -50,9 +50,31 @@ AppAsset::register($this);
                     'items' => [
                         '<li class="divider"></li>',
                         '<li class="dropdown-header">' . 'SockJs-Client' . '</li>',
-                        ['label' => 'Basic', 'url' => ['/basic/index']],
-                        ['label' => 'Chat', 'url' => ['/chat/index']],
-                        ['label' => 'Uploading Files', 'url' => ['/file/index']],
+                        ['label' => 'Basic', 'url' => ['/sock-js/index']],
+                        '<li class="divider"></li>',
+                        '<li class="dropdown-header">' . 'Examples' . '</li>',
+                        ['label' => 'Temp Queue', 'url' => ['/sock-js/temp-queue']],
+                        ['label' => 'Echo', 'url' => ['/sock-js/echo']],
+                        ['label' => 'Send', 'url' => ['/sock-js/send']],
+                        ['label' => 'Send 2', 'url' => ['/sock-js/send2']],
+                        ['label' => 'Uploading Files', 'url' => ['/sock-js/file']],
+                    ]
+                ],
+                [
+                    'label' => 'Теория',
+                    'items' => [
+                        '<li class="divider"></li>',
+                        '<li class="dropdown-header">' . 'RabbitMQ' . '</li>',
+                        ['label' => 'Теория', 'url' => ['/theory/rabbitmq']],
+                        ['label' => 'Ссылки', 'url' => ['/theory/rabbitmq-links']],
+                        '<li class="divider"></li>',
+                        '<li class="dropdown-header">' . 'Демон-процессы' . '</li>',
+                        ['label' => 'Ссылки', 'url' => ['/theory/daemon-links']],
+                        ['label' => 'phpDaemon', 'url' => ['/theory/php-daemon']],
+                        '<li class="divider"></li>',
+                        '<li class="dropdown-header">' . 'Stomp' . '</li>',
+                        ['label' => 'Теория', 'url' => ['/theory/stomp']],
+                        ['label' => 'Ссылки', 'url' => ['/theory/stomp-links']],
                     ]
                 ],
             ];

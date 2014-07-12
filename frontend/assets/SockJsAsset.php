@@ -4,19 +4,22 @@ namespace frontend\assets;
 
 use yii\web\AssetBundle;
 
-class BasicAsset extends AssetBundle
+class SockJsAsset extends AssetBundle
 {
 
-    public $basePath = '@noderoot';
-    public $baseUrl = '@node';
+    public $basePath = '@sockjsroot';
+    public $baseUrl = '@sockjs';
 
     public $css = [
-        'css/screen.css',
+        'css/basic.css',
     ];
 
     public $js = [
-        'js/client.js',
-        'js/basic.js',
+        'js/sockjs-0.3.min.js',
+        'js/stomp.js',
+//        'js/basic.js',
+        'js/basic2.js',
+//        'js/basic3.js',
     ];
 
     public $depends = [

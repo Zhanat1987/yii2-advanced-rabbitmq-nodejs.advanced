@@ -11,7 +11,7 @@ function fileStart()
     $('.fileStart').bind('click', function() {
         $.ajax({
             type: 'POST',
-            url: '/file/start',
+            url: '/sock-js/file-start',
             contentType: 'application/json; charset=utf-8',
             dataType: 'json',
             success: function(response) {
@@ -31,7 +31,7 @@ function fileStop()
     $('.fileStop').bind('click', function() {
         $.ajax({
             type: 'POST',
-            url: '/file/stop',
+            url: '/sock-js/file-stop',
             contentType: 'application/json; charset=utf-8',
             dataType: 'json',
             success: function(response) {

@@ -1,7 +1,7 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: zhanat
- * Date: 11.07.14
- * Time: 19:35
- */ 
+<?php \frontend\assets\SockJsAsset::register($this); ?>
+<h1>
+    Waiting for messages
+</h1>
+<div id="output">
+    <!-- incoming messages will be printed here -->
+</div>
