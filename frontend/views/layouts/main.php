@@ -75,6 +75,14 @@ AppAsset::register($this);
                         '<li class="dropdown-header">' . 'Stomp' . '</li>',
                         ['label' => 'Теория', 'url' => ['/theory/stomp']],
                         ['label' => 'Ссылки', 'url' => ['/theory/stomp-links']],
+                        '<li class="divider"></li>',
+                        '<li class="dropdown-header">' . 'Sock Js Client' . '</li>',
+                        ['label' => 'Теория', 'url' => ['/theory/sock-js-client']],
+                        ['label' => 'Ссылки', 'url' => ['/theory/sock-js-client-links']],
+                        '<li class="divider"></li>',
+                        '<li class="dropdown-header">' . 'ReactPhp' . '</li>',
+                        ['label' => 'Теория', 'url' => ['/theory/react-php']],
+                        ['label' => 'Ссылки', 'url' => ['/theory/react-php-links']],
                     ]
                 ],
             ];

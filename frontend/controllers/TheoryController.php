@@ -38,4 +38,24 @@ class TheoryController extends Controller
         return $this->render('stomp-links');
     }
 
+    public function actionSockJsClient()
+    {
+        return $this->render('sock-js-client');
+    }
+
+    public function actionSockJsClientLinks()
+    {
+        return $this->render('sock-js-client-links');
+    }
+
+    public function actionReactPhp()
+    {
+        return $this->render('react-php');
+    }
+
+    public function actionReactPhpLinks()
+    {
+        return $this->render('react-php-links');
+    }
+
 }

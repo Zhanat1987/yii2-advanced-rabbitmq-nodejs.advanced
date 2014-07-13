@@ -20,7 +20,8 @@
 		"yiisoft/yii2-swiftmailer": "*",
 		"videlalvaro/php-amqplib": "2.4.*@dev",
         "vova07/yii2-console-runner-extension": "dev-master",
-        "react/stomp": "0.1.*"
+        "react/stomp": "0.1.*",
+        "fusesource/stomp-php" : "2.0.*"
 	},
 	"require-dev": {
 		"yiisoft/yii2-codeception": "*",

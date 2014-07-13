@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f3189c8b550eca913eb1c1290f634a1c",
+    "hash": "3bbd2b3956a7ef790bf64ba101539d82",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -154,6 +154,55 @@
                 "html"
             ],
             "time": "2013-11-30 08:25:19"
+        },
+        {
+            "name": "fusesource/stomp-php",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dejanb/stomp-php.git",
+                "reference": "7dde75c4690d68665334e8fc3a98275c8f658300"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dejanb/stomp-php/zipball/7dde75c4690d68665334e8fc3a98275c8f658300",
+                "reference": "7dde75c4690d68665334e8fc3a98275c8f658300",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "FuseSource": "src/main"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache 2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Dejan Bosnanac",
+                    "email": "dejan@nighttale.net",
+                    "homepage": "http://www.nighttale.net"
+                },
+                {
+                    "name": "Sören Rohweder",
+                    "email": "s.rohweder@blage.net",
+                    "homepage": "http://www.monofone.de"
+                }
+            ],
+            "description": "stomp support for PHP",
+            "homepage": "http://github.com/dejanb/stomp-php",
+            "keywords": [
+                "activeMQ",
+                "jms",
+                "messaging",
+                "stomp"
+            ],
+            "time": "2012-07-13 13:40:27"
         },
         {
             "name": "react/event-loop",
@@ -628,12 +677,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "f45c13770747517d8f0f743bb7d24f987c80790a"
+                "reference": "65b914f41b42400bae2bef999c184cd8cc3565e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/f45c13770747517d8f0f743bb7d24f987c80790a",
-                "reference": "f45c13770747517d8f0f743bb7d24f987c80790a",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/65b914f41b42400bae2bef999c184cd8cc3565e7",
+                "reference": "65b914f41b42400bae2bef999c184cd8cc3565e7",
                 "shasum": ""
             },
             "require": {
@@ -701,7 +750,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2014-07-12 12:34:35"
+            "time": "2014-07-12 17:14:48"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
